@@ -1,0 +1,230 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.loginLabel {
+  @apply text-white font-roboto font-normal text-base;
+}
+.loginInput {
+  @apply focus:border-orange-custom-500 text-white;
+}
+.common-formClass {
+  @apply font-montserrat font-normal text-xs sm:text-[16px];
+}
+.address-form-label {
+  @apply common-formClass text-address-form;
+}
+.address-form-placeholder {
+  @apply common-formClass text-gray-text;
+}
+.address-input {
+  @apply px-[15px] py-[6px] focus:border-orange-custom-300 text-black;
+}
+.select-input {
+  @apply px-[15px] py-[6px] focus:border-orange-custom-300 font-montserrat;
+}
+.form-title {
+  @apply font-montserrat font-normal text-base sm:text-xl;
+}
+.login-common-text {
+  @apply font-bold text-base font-roboto;
+}
+.collapsible-icon {
+  @apply w-7 h-7 text-white cursor-pointer hover:bg-orange-custom-400;
+}
+.header-nav {
+  @apply font-normal font-montserrat text-sm lg:text-lg;
+}
+.header-container {
+  @apply bg-black-custom h-20 content-center;
+}
+
+.header-content {
+  @apply flex justify-between items-center py-2 px-10;
+}
+.btn-login {
+  @apply lg:text-[19px] text-sm font-medium font-montserrat rounded-[5px] w-full text-white-custom;
+}
+.btn-detail {
+  @apply hover:bg-yellow-600 font-montserrat font-semibold text-sm text-white-custom w-[170px] h-[40px]  py-2.5 px-3.5 gap-[10px];
+}
+.cart-icon {
+  @apply text-white-custom w-[32.67px] h-[30px] cursor-pointer;
+}
+.modal-nav {
+  @apply flex flex-col gap-5 mt-6 font-normal font-montserrat text-lg text-white-custom;
+}
+.modal-container {
+  @apply fixed inset-0 bg-black-custom py-3 px-10;
+}
+.modal-content {
+  @apply flex justify-between items-center;
+}
+.logo-size {
+  @apply w-[50px] h-[50px];
+}
+.social-icon {
+  @apply w-[30px] h-[30px];
+}
+.footer-container {
+  @apply h-[190px] mt-12 border-t border-footer-border md:px-40 px-10 content-center;
+}
+.footer-content {
+  @apply mt-4 flex flex-col lg:flex-row lg:justify-between gap-5;
+}
+.footer-links {
+  @apply flex gap-5 lg:gap-10 list-none cursor-pointer text-primary font-montserrat font-normal text-xs lg:text-[15px];
+}
+.copy-right-text {
+  @apply text-gray-text font-montserrat font-light text-xs lg:text-base;
+}
+.main-section {
+  @apply bg-black-custom text-white flex flex-col md:flex-row md:justify-evenly items-center py-14   gap-10 md:gap-0 w-full;
+}
+.logos {
+  @apply md:w-[260px] md:h-[80px];
+}
+.see-all-text {
+  @apply self-center font-lora font-normal text-sm md:text-[17px] mt-5 text-blue-custom-100 cursor-pointer;
+}
+.designer-title {
+  @apply font-lora font-bold text-2xl md:text-[28px] text-blue-custom-200;
+}
+.designer-description {
+  @apply font-montserrat font-light text-sm md:text-base text-black-custom opacity-40;
+}
+.designer-name {
+  @apply text-sm md:text-xl text-black-custom text-center hover:text-blue-custom-200 cursor-pointer;
+}
+.designer-role {
+  @apply font-normal text-black-custom text-center;
+}
+.padding-home {
+  @apply px-28 py-10;
+}
+.padding-category {
+  @apply px-24 py-6;
+}
+.add-to-cart-container {
+  @apply flex flex-col md:flex-row w-full lg:w-[70%] gap-7 justify-center items-start px-24;
+}
+.cart-page-font {
+  @apply font-montserrat font-medium;
+}
+.detail-page-title {
+  @apply cart-page-font text-2xl md:text-[28px] text-black-custom;
+}
+.detail-page-price {
+  @apply font-montserrat font-normal text-sm md:text-[17px] text-gray-text;
+}
+.common-cart-class {
+  @apply w-[31px] h-[31px] rounded-[3px] flex items-center justify-center;
+}
+.increment-icon {
+  @apply common-cart-class bg-cart-btn-green;
+}
+.decrement-icon {
+  @apply common-cart-class bg-cart-btn-gray;
+}
+.counter-icon {
+  @apply fill-white text-lg;
+}
+.del-from-cart {
+  @apply common-cart-class bg-cart-btn-red;
+}
+.item-counter {
+  @apply cart-page-font text-[15px] text-black-custom;
+}
+.common-cart-btn {
+  @apply cart-page-font text-[15px] rounded-md text-center;
+}
+.add-to-cart-btn {
+  @apply bg-orange-custom-400 text-white-custom common-cart-btn;
+}
+.add-to-wishList-btn {
+  @apply bg-cart-btn-gray text-gray-text cart-page-font common-cart-btn;
+}
+.common-checkout {
+  @apply font-inter font-normal text-base;
+}
+.checkout-btn {
+  @apply bg-orange-custom-500 text-white-custom common-checkout;
+}
+.back-to-home-btn {
+  @apply bg-light-blue text-white-custom common-checkout;
+}
+.cancel-btn {
+  @apply bg-cart-btn-gray text-gray-text common-checkout;
+}
+.cart-items {
+  @apply font-inter font-normal text-black-custom;
+}
+.cart-page-designer-dtl {
+  @apply cart-page-font text-[17px];
+}
+.designer-img-cartPg {
+  @apply rounded-full w-[56px] h-[56px];
+}
+.tab-label {
+  @apply w-full p-6 bg-white-custom shadow-lg max-h-60 md:max-h-72 overflow-y-auto rounded-md;
+}
+.common-tab-class {
+  @apply font-montserrat font-normal text-gray-text text-xs;
+}
+.description-tab {
+  @apply common-tab-class md:text-[15px];
+}
+.reviewer-name {
+  @apply font-montserrat font-medium text-black-text-reviewer text-xs md:text-[17px];
+}
+.reviewer-comment {
+  @apply common-tab-class md:text-sm;
+}
+.tab-className {
+  @apply inline-block px-3 py-2 cursor-pointer font-montserrat font-normal text-gray-text text-xs md:text-base;
+}
+.tab-selectedClassName {
+  @apply !text-blue-custom-200 bg-white focus:outline-none rounded-t-md;
+}
+.text-gradient {
+  @apply bg-gradient-to-r from-[#8526FE] to-[#F2AF3F] text-transparent bg-clip-text font-montserrat font-bold text-sm md:text-[22px];
+}
+.checkout-title {
+  @apply font-montserrat font-normal text-black-custom text-base md:text-xl;
+}
+.checkout-h3 {
+  @apply font-montserrat font-normal text-black-custom text-sm md:text-lg;
+}
+.eid-promo-h3 {
+  @apply font-montserrat font-normal text-blue-custom-200 text-sm md:text-lg;
+}
+.checkout-p {
+  @apply font-montserrat font-normal text-black-custom text-sm opacity-50;
+}
+.checkout-h2 {
+  @apply font-montserrat font-medium text-sm md:text-lg text-cart-btn-green;
+}
+.checkout-eid-promo {
+  @apply font-montserrat font-medium text-sm md:text-lg;
+}
+.cart-pg-title {
+  @apply font-lora font-semibold text-xl sm:text-[28px] text-blue-custom-200;
+}
+.cart-pg-subtitle {
+  @apply font-montserrat font-normal  sm:text-[17px] text-black-custom opacity-40;
+}
+.checkout-pg-container {
+  @apply w-full flex flex-col items-center justify-center gap-5 min-h-screen p-6 sm:p-24;
+}
+.checkout-pg-title {
+  @apply font-montserrat font-medium text-base sm:text-[28px] text-blue-custom-200 text-center;
+}
+.checkout-pg-subtitle {
+  @apply font-montserrat font-normal text-sm sm:text-xl text-black-custom text-center opacity-40;
+}
+.checkout-img {
+  @apply w-[45%] sm:w-[20%];
+}
+.checkout-pg-btn {
+  @apply back-to-home-btn w-[75%] sm:w-[50%] md:w-[18%];
+}

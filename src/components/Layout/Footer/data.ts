@@ -1,0 +1,1 @@
+export const data = ['JOBS', 'DEVELOPER', 'TERMS', 'PRIVACY POLICY'];
