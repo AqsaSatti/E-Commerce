@@ -1,7 +1,7 @@
 export const mapProductsData = async (response:any) => {
   const products = response.products;
   const formattedProducts = products.map((product: any) => ({
-    ...product,
+    ...product, 
     image: product.thumbnail,
     name: product.title,
     role: `IDR.${product.price}`,

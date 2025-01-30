@@ -1,4 +1,4 @@
-import { axiosInstance } from "../components/API";
+import { axiosInstance } from "../API";
 import { HTTPMethod } from "./HTTPMethods";
 import { AxiosRequestConfig } from "axios";
 
@@ -15,7 +15,7 @@ const APIHandler = async (
       ...(method !== HTTPMethod.GET && { data: body }),
       ...config,
     });
-    console.log("response in APIHandler", response.data)
+    // console.log("response in APIHandler", response.data)
     return response.data;
   } catch (error) {
     console.error("Error in API", error);

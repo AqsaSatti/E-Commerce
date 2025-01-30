@@ -2,10 +2,12 @@ import { APIHandler } from "../utils/APIHandler";
 import { HTTPMethod } from "../utils/HTTPMethods";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/Auth/useAuth";
+import { useCartContext } from "../context/Cart/useCart";
 
 export const useApi = () => {
   const navigate = useNavigate();
   const { setAuthState } = useAuth();
+  const {clearCart } = useCartContext();
 
   const login = async (username: string, password: string) => {
     try {
@@ -23,17 +25,18 @@ export const useApi = () => {
           accessToken: response.accessToken,
           refreshToken: response.refreshToken,
         });
-        localStorage.setItem("accessToken", accessToken); 
-        localStorage.setItem("refreshToken", refreshToken); 
+        localStorage.setItem("accessToken", accessToken);
+        localStorage.setItem("refreshToken", refreshToken);
 
         console.log("Login successful");
         navigate("/");
 
       } else {
-        console.error("Invalid login response:", response);
+        throw new Error("Invalid login response");
       }
     } catch (error) {
       console.error("Error logging in:", error);
+      throw error;
     }
   };
 
@@ -46,7 +49,7 @@ export const useApi = () => {
       console.error("Error fetching user:", error);
     }
   };
-  const getProducts = async () => {
+  const getProductsByLimit = async () => {
     try {
       const response = await APIHandler(HTTPMethod.GET, '/products?limit=6');
       console.log("products: ", response)
@@ -57,9 +60,9 @@ export const useApi = () => {
   };
 
   //Get All Products
-  const getAllProducts = async () => {
+  const getAllProducts = async (limit = 194, skip = 0) => {
     try {
-      const response = await APIHandler(HTTPMethod.GET, '/products');
+      const response = await APIHandler(HTTPMethod.GET, `/products?limit=${limit}&skip=${skip}`);
       console.log("products: ", response)
       return response
     } catch (error) {
@@ -68,9 +71,13 @@ export const useApi = () => {
   };
 
   //Similar Produts by category
-  const fetchProductsByCategory = async (category: string) => {
+  const fetchProductsByCategory = async (category: string, limit?:number) => {
     try {
-      const response = await APIHandler(HTTPMethod.GET, `/products/category/${category}?limit=3`);
+      let url = `/products/category/${category}`;
+      if (limit !== undefined) {
+        url += `?limit=${limit}`;
+      }
+      const response = await APIHandler(HTTPMethod.GET, url);
       console.log("products by category: ", response)
       return response
     } catch (error) {
@@ -86,12 +93,18 @@ export const useApi = () => {
       console.error("Error fetching single product :", error);
     }
   };
-  
 
-  // const logout = () => {
-  //   // eventEmitter.emit("tokensUpdated", { accessToken: null, refreshToken: null });
-  //   console.log("User logged out");
-  // };
 
-  return { login, currentUser, getProducts,fetchProductsByCategory, fetchSingleProduct,getAllProducts, };
+  const logout = () => {
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("refreshToken");
+    setAuthState({
+      accessToken: null,
+      refreshToken: null,
+      user: null,
+    });
+    clearCart();
+  };
+
+  return { login, currentUser, getProductsByLimit , fetchProductsByCategory, fetchSingleProduct, getAllProducts,logout };
 };

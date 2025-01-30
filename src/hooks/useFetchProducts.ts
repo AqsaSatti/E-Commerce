@@ -2,12 +2,12 @@ import { useState, useEffect } from "react";
 import { useApi } from "./useApi";
 
 export const useFetchProducts = () => {
-  const { getProducts } = useApi();
+  const { getProductsByLimit  } = useApi();
   const [products, setProducts] = useState<any[]>([]);
   
   const fetchProducts = async () => {
     try {
-      const response = await getProducts();
+      const response = await getProductsByLimit ();
       const product = response.products;
       const formattedProducts = product.map((product: any) => ({
         ...product,

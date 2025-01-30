@@ -7,12 +7,16 @@ import { CartProvider } from "./context/Cart/useCart.tsx";
 
 createRoot(document.getElementById("root")!).render(
   // <StrictMode>
-    <AuthProvider>
-      <CounterProvider>
-        <CartProvider>
+  <AuthProvider>
+    <CounterProvider>
+      <CartProvider>
+      <div className="w-full h-screen flex justify-center">
+        <div className="w-full max-w-[1440px]">
           <App />
-        </CartProvider>
-      </CounterProvider>
-    </AuthProvider>
+        </div>
+      </div>
+      </CartProvider>
+    </CounterProvider>
+  </AuthProvider>
   // </StrictMode>,
 );

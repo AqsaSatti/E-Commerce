@@ -1,5 +1,5 @@
 import { createContext, useContext,useState } from "react";
-import { CounterContextProps } from "./Counter.Interface";
+import { CounterContextProps } from "./useCounter.Interface";
   
 export const CounterContext = createContext<CounterContextProps | undefined>(
   undefined

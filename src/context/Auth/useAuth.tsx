@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { AuthContextProps, AuthState } from "./useAuth.Interface";
-import { updateTokenState } from "../../components/API/AuthHelper";
+import { AuthContextProps, AuthState } from "./useAuth.interface";
+import { updateTokenState } from "../../API/AuthHelper";
 import { HTTPMethod } from "../../utils/HTTPMethods";
 import { APIHandler } from "../../utils/APIHandler";
 
@@ -25,7 +25,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
         ...prevState,
         user: response,
       }));
-      console.log('userData', response)
+      // console.log('userData', response)
     } catch (error) {
       console.error("Error fetching user in dashborad:", error);
     }

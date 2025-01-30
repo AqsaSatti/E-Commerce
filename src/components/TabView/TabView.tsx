@@ -1,7 +1,7 @@
 import React from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
-import { TabViewProps } from "./Interface.Tab";
+import { TabViewProps } from "./TabView.interface";
 
 export const TabView: React.FC<TabViewProps> = ({
   tabs,

@@ -1,5 +1,5 @@
 import React from 'react';
-import { InputProps } from './Input.Interface';
+import { InputProps } from './Input.interface';
 import clsx from 'clsx';
 
 export const Input: React.FC<InputProps> = ({

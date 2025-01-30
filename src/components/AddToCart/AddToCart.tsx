@@ -1,18 +1,18 @@
 import designer from "../../assets/images/designer1.svg";
-import { useSingleProductDetail } from "../../hooks/useSingleProduct";
 import { Button } from "../Button";
 import { Counter } from "../Counter";
-import { AddToCartProps } from "./AddToCart.Interface";
-import { DesignerDetail } from "./DesignerDetail";
+import { DesignerDetail } from "../DesignerDetail";
 import { useCounterContext } from "../../context/Counter/useCounter";
 import { useCartContext } from "../../context/Cart/useCart";
 import { useAuth } from "../../context/Auth/useAuth";
 import { useNavigate } from "react-router-dom";
+import { AddToCartProps } from "./AddToCart.interface";
+import { useSingleProductDetail } from "../../hooks/useSingleProductDetail";
 
 export const AddToCart: React.FC<AddToCartProps> = ({ id }) => {
   const { state } = useSingleProductDetail(id);
   const { loading, data } = state;
-  const { count, setCount,increment, decrement } = useCounterContext();
+  const { count,setCount,increment, decrement } = useCounterContext();
   const { addToCart } = useCartContext();
   const {user} = useAuth()
   const navigate = useNavigate()
@@ -33,8 +33,8 @@ export const AddToCart: React.FC<AddToCartProps> = ({ id }) => {
 
     try {
       addToCart(product,userId);
-      setCount(1)
-      alert("Product added to cart successfully!");
+      setCount(1);
+      // navigate('/cart')
       
     } catch (error) {
       console.error("Error adding to cart:", error);
@@ -50,7 +50,7 @@ if (loading) {
       {/* image section */}
       <div className=" w-full md:w-[55%] flex justify-center">
         <img
-          className="max-w-full h-auto object-contain"
+          className="w-[50%] sm:w-[70%] md:w-full"
           src={data.image}
           alt=""
         />
@@ -62,7 +62,10 @@ if (loading) {
           <h1 className="detail-page-title">{data.name}</h1>
           <p className="detail-page-price">$ {data.price}</p>
 
-          <Counter count={count} increment={() => increment(data.stock)} decrement={decrement} />
+          <Counter 
+           count={count}
+           increment={() => increment(data.stock)} 
+           decrement={decrement} />
 
           <Button
             size="small"

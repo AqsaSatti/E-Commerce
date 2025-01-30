@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
-import { CartContextProps, CartItem } from "./useCart.Interface";
+import { CartContextProps, CartItem } from "./useCart.interface";
 
 const CartContext = createContext<CartContextProps | undefined>(undefined);
 
@@ -23,20 +23,32 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
     }
   }, [cart]);
 
-  const addToCart = (item: CartItem, userId:number) => {
+  const addToCart = (item: CartItem, userId: number) => {
     setCart((prevCart) => {
-      const existingItem = prevCart.find((cartItem) => cartItem.id === item.id && cartItem.userId === userId);
+      const existingItem = prevCart.find(
+        (cartItem) => cartItem.id === item.id && cartItem.userId === userId
+      );
 
       if (existingItem) {
-        return prevCart
+        // Update the existing item with the new value
+        return prevCart.map((cartItem) =>
+          cartItem.id === item.id && cartItem.userId === userId
+            ? { ...cartItem, ...item } // Merge new values into the existing item
+            : cartItem
+        );
       }
 
+      // Add the new item to the cart
       return [...prevCart, item];
     });
   };
 
-  const removeFromCart = (id: string, userId:number) => {
-    setCart((prevCart) => prevCart.filter((cartItem) => cartItem.id !== id && cartItem.userId !== userId));
+   const removeFromCart = (Itemid: string, userId: number) => {
+    setCart((prevCart) =>
+      prevCart.filter(
+        (cartItem) => !(cartItem.id === Itemid && cartItem.userId === userId)
+      )
+    );
   };
 
   const clearCart = () => {
