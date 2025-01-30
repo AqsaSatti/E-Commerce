@@ -1,6 +1,6 @@
 import React from 'react';
-import { InputProps } from './Input.interface';
 import clsx from 'clsx';
+import { InputProps } from './Input.interface';
 
 export const Input: React.FC<InputProps> = ({
     variant = 'underlined',

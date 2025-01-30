@@ -1,8 +1,8 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { AuthContextProps, AuthState } from "./useAuth.interface";
 import { updateTokenState } from "../../API/AuthHelper";
 import { HTTPMethod } from "../../utils/HTTPMethods";
 import { APIHandler } from "../../utils/APIHandler";
+import { AuthContextProps, AuthState } from "./useAuth.interface";
 
 export const AuthContext = createContext<AuthContextProps | undefined>(
   undefined
@@ -21,7 +21,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   const fetchCurrentUser = async () => {
     try {
       const response = await APIHandler(HTTPMethod.GET, "/auth/me");
-      setAuthState((prevState) => ({
+      setAuthState((prevState:AuthState) => ({
         ...prevState,
         user: response,
       }));

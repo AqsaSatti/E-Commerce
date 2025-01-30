@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { useCartContext } from "../../context/Cart/useCart";
 import { useAuth } from "../../context/Auth/useAuth";
 import { useApi } from "../../hooks/useApi";
+import { CartItem } from "../../context/Cart/useCart.interface";
 
 export const Header = () => {
   const { isOpen, toggleMenu } = useToggleMenu({ initialState: false });
@@ -18,7 +19,7 @@ export const Header = () => {
   const { user } = useAuth();
   const userId = user?.id;
 
-  const userCart = cart.filter((item) => item.userId === userId);
+  const userCart = cart.filter((item:CartItem) => item.userId === userId);
 
   const showCart = async () => {
     if (!userId) {

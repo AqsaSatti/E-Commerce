@@ -5,13 +5,14 @@ import { useCartContext } from "../../context/Cart/useCart";
 import { useNavigate } from "react-router-dom";
 import { formatPrice } from "../../utils/FormatPrice";
 import { useAuth } from "../../context/Auth/useAuth";
+import { CartItem } from "../../context/Cart/useCart.interface";
 
 export const CheckoutForm = () => {
   const { cart } = useCartContext();
   const navigate = useNavigate();
   const { user } = useAuth();
   const userId = user?.id;
-  const userCart = cart.filter((item) => item.userId === userId);
+  const userCart = cart.filter((item:CartItem) => item.userId === userId);
 
   return (
     <div className="w-full sm:w-[60%] lg:w-[50%]  sm:min-w-0 min-w-[200px] ">

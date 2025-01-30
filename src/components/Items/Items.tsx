@@ -9,6 +9,7 @@ import {
 import { useAuth } from "../../context/Auth/useAuth";
 import { useNavigate } from "react-router-dom";
 import { Button } from "../Button";
+import { CartItem } from "../../context/Cart/useCart.interface";
 
 export const Items: React.FC = () => {
   const { cart, setCart, removeFromCart } = useCartContext();
@@ -17,16 +18,16 @@ export const Items: React.FC = () => {
   const navigate = useNavigate();
 
   // Filter cart items for the current user
-  const userCart = cart.filter((item) => item.userId === userId);
+  const userCart = cart.filter((item:CartItem) => item.userId === userId);
 
   const increment = (itemId: number, stock: number) => {
-    setCart((prevCart) =>
+    setCart((prevCart:CartItem[]) =>
       incrementItemQuantity(prevCart, itemId, stock, userId)
     );
   };
 
   const decrement = (itemId: number) => {
-    setCart((prevCart) => decrementItemQuantity(prevCart, itemId, userId));
+    setCart((prevCart:CartItem[]) => decrementItemQuantity(prevCart, itemId, userId));
   };
   const onProductClick = (id: number) => {
     navigate(`/single-product/${id}`);
