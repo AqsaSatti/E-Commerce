@@ -38,7 +38,7 @@ export const Items: React.FC = () => {
       <div className="flex flex-col justify-center gap-4 overflow-x-auto">
         <h2 className="cart-items text-lg sm:text-xl ">Your Items</h2>
         {/* Items */}
-        {userCart.map((item) => (
+        {userCart.map((item:CartItem) => (
           <div
             key={item.id}
             className="grid grid-cols-6 gap-4 items-center sm:min-w-0 min-w-[500px] cursor-pointer "
